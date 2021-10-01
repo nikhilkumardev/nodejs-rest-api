@@ -1,6 +1,13 @@
 import express from 'express';
+import dotenv from 'dotenv';
+dotenv.config();
+
 const application = express();
 
-application.listen(3000,()=>{
-    console.log(`server is running on port 3000`);
-})
+const startServer = async () =>{
+    application.listen(process.env.PORT || 3000,()=>{
+        console.log(`server is running on port ${process.env.PORT || 3000}`);
+    })
+}
+
+await startServer();
